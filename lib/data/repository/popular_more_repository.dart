@@ -5,12 +5,8 @@ class PopularMoreRepository {
 
   const PopularMoreRepository({required this.remoteSource});
 
-  Future<dynamic> getPopularMovies({
-    required String apiKey,
-    required int page,
-  }) async {
-    final response =
-        await remoteSource.getPopularMovies(apiKey: apiKey, page: page);
+  Future<dynamic> getPopularMovies({required int page}) async {
+    final response = await remoteSource.getPopularMovies(page: page);
     if (response.data != null) {
       return response.data;
     }

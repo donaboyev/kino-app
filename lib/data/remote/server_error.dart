@@ -5,22 +5,22 @@ class ServerError implements Exception {
   String _errorMessage = '';
 
   ServerError.withError({required Object error}) {
-    _handleError(error as DioError);
+    _handleError(error as DioException);
   }
 
-  _handleError(DioError error) {
+  _handleError(DioException error) {
     _errorCode = error.response?.statusCode ?? 500;
     switch (error.type) {
-      case DioErrorType.connectTimeout:
+      case DioExceptionType.connectionTimeout:
         _errorMessage = "Connection timeout";
         break;
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         _errorMessage = "Connection timeout";
         break;
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         _errorMessage = "Connection timeout";
         break;
-      case DioErrorType.response:
+      case DioExceptionType.badResponse:
         {
           if (error.response?.data['Error'] is Map<String, dynamic>) {
             _errorMessage = error.response!.data['Error']['Message'].toString();
@@ -29,12 +29,18 @@ class ServerError implements Exception {
           }
           break;
         }
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         _errorMessage = "Canceled";
         break;
-      case DioErrorType.other:
+      case DioExceptionType.unknown:
         _errorMessage = "Something wrong";
         break;
+      case DioExceptionType.badCertificate:
+        // TODO: Handle this case.
+        throw UnimplementedError();
+      case DioExceptionType.connectionError:
+        // TODO: Handle this case.
+        throw UnimplementedError();
     }
     return _errorMessage;
   }

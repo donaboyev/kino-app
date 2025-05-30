@@ -23,7 +23,8 @@ class TopRatedMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels) getTopRatedMovies();
+          scrollController!.position.pixels)
+        getTopRatedMovies();
     });
     super.onInit();
   }
@@ -41,10 +42,7 @@ class TopRatedMoreController extends BaseController {
     } else {
       _isTopRatedLoading.value = true;
     }
-    final result = await repository.getTopRatedMovies(
-      apiKey: Constants.apiKey,
-      page: _topRatedPage,
-    );
+    final result = await repository.getTopRatedMovies(page: _topRatedPage);
     _isTopRatedLoading.value = false;
     setLoading(false);
     if (result is MovieResponse) {

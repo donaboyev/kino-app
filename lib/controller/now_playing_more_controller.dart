@@ -24,7 +24,8 @@ class NowPlayingMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels) getNowPlayingMovies();
+          scrollController!.position.pixels)
+        getNowPlayingMovies();
     });
     super.onInit();
   }
@@ -42,10 +43,7 @@ class NowPlayingMoreController extends BaseController {
     } else {
       _isNowPlayingLoading.value = true;
     }
-    final result = await repository.getNowPlayingMovies(
-      apiKey: Constants.apiKey,
-      page: _nowPlayingPage,
-    );
+    final result = await repository.getNowPlayingMovies(page: _nowPlayingPage);
     _isNowPlayingLoading.value = false;
     setLoading(false);
     if (result is MovieResponse) {

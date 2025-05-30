@@ -24,7 +24,8 @@ class PeopleMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels) getTrendingPeople();
+          scrollController!.position.pixels)
+        getTrendingPeople();
     });
     super.onInit();
   }
@@ -42,10 +43,7 @@ class PeopleMoreController extends BaseController {
     } else {
       _isPeopleLoading.value = true;
     }
-    final result = await repository.getTrendingPeople(
-      apiKey: Constants.apiKey,
-      page: _peoplePage,
-    );
+    final result = await repository.getTrendingPeople(page: _peoplePage);
     _isPeopleLoading.value = false;
     setLoading(false);
     if (result is PersonResponse) {

@@ -1,25 +1,27 @@
+import 'package:get/get.dart';
 import 'package:kino_app/data/remote/remote_source.dart';
 
-class DiscoverMoreRepository {
-  final RemoteSource remoteSource;
+import '../network/http_service.dart';
 
-  const DiscoverMoreRepository({required this.remoteSource});
+class DiscoverMoreRepository {
+  const DiscoverMoreRepository();
 
   Future<dynamic> getMoviesByGenre({
     required int? genreId,
-    required String apiKey,
     required int page,
   }) async {
-    final response = await remoteSource.getMoviesByGenre(
-        genreId: genreId, page: page, apiKey: apiKey);
+    final response = await Get.find<HttpService>().dio.get(
+      '/discover/movie/',
+      queryParameters: {'with_genres': genreId, 'page': page},
+    );
     if (response.data != null) {
       return response.data;
     }
     return 'Error occurred';
   }
 
-  Future<dynamic> getGenres({required String apiKey}) async {
-    final response = await remoteSource.getGenres(apiKey: apiKey);
+  Future<dynamic> getGenres() async {
+    final response = await Get.find<HttpService>().dio.get('/genre/movie/list');
     if (response.data != null) {
       return response.data;
     }

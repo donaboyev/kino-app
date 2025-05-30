@@ -28,7 +28,8 @@ class DiscoverMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels) getMoviesByGenre();
+          scrollController!.position.pixels)
+        getMoviesByGenre();
     });
     super.onInit();
   }
@@ -41,7 +42,7 @@ class DiscoverMoreController extends BaseController {
 
   Future<void> getGenres() async {
     setLoading(true);
-    final result = await repository.getGenres(apiKey: Constants.apiKey);
+    final result = await repository.getGenres();
     setLoading(false);
     if (result is GenreResponse) {
       _genres = result.genres;
@@ -73,7 +74,6 @@ class DiscoverMoreController extends BaseController {
       _isDiscoverLoading.value = true;
     }
     final result = await repository.getMoviesByGenre(
-      apiKey: Constants.apiKey,
       page: _discoverPage,
       genreId: genres![_selectedGenreIndex.value].id,
     );

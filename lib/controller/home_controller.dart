@@ -69,8 +69,7 @@ class HomeController extends BaseController {
 
   Future<void> getUpcomingMovies() async {
     setLoading(true);
-    final result =
-        await repository.getUpcomingMovies(apiKey: Constants.apiKey);
+    final result = await repository.getUpcomingMovies();
     setLoading(false);
     if (result is MovieResponse) {
       _upcomingMovies.addAll(result.movies!);
@@ -87,10 +86,7 @@ class HomeController extends BaseController {
     } else {
       _isTopRatedLoading.value = true;
     }
-    final result = await repository.getTopRatedMovies(
-      apiKey: Constants.apiKey,
-      page: _topRatedPage,
-    );
+    final result = await repository.getTopRatedMovies(page: _topRatedPage);
     _isTopRatedLoading.value = false;
     setLoading(false);
     if (result is MovieResponse) {
@@ -111,10 +107,7 @@ class HomeController extends BaseController {
     } else {
       _isPopularLoading.value = true;
     }
-    final result = await repository.getPopularMovies(
-      apiKey: Constants.apiKey,
-      page: _popularPage,
-    );
+    final result = await repository.getPopularMovies(page: _popularPage);
     _isPopularLoading.value = false;
     setLoading(false);
     if (result is MovieResponse) {
@@ -135,10 +128,7 @@ class HomeController extends BaseController {
     } else {
       _isNowPlayingLoading.value = true;
     }
-    final result = await repository.getNowPlayingMovies(
-      apiKey: Constants.apiKey,
-      page: _nowPlayingPage,
-    );
+    final result = await repository.getNowPlayingMovies(page: _nowPlayingPage);
     _isNowPlayingLoading.value = false;
     setLoading(false);
     if (result is MovieResponse) {
@@ -154,7 +144,7 @@ class HomeController extends BaseController {
 
   Future<void> getGenres() async {
     setLoading(true);
-    final result = await repository.getGenres(apiKey: Constants.apiKey);
+    final result = await repository.getGenres();
     setLoading(false);
     if (result is GenreResponse) {
       _genres = result.genres;
@@ -186,7 +176,6 @@ class HomeController extends BaseController {
       _isDiscoverLoading.value = true;
     }
     final result = await repository.getMoviesByGenre(
-      apiKey: Constants.apiKey,
       page: _discoverPage,
       genreId: genres![_selectedGenreIndex.value].id,
     );
@@ -218,10 +207,7 @@ class HomeController extends BaseController {
     } else {
       _isPeopleLoading.value = true;
     }
-    final result = await repository.getTrendingPeople(
-      apiKey: Constants.apiKey,
-      page: _peoplePage,
-    );
+    final result = await repository.getTrendingPeople(page: _peoplePage);
     _isPeopleLoading.value = false;
     setLoading(false);
     if (result is PersonResponse) {

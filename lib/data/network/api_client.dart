@@ -2,6 +2,7 @@ import 'package:alice/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:kino_app/core/constants/constants.dart';
+import 'package:kino_app/data/network/token_interceptor.dart';
 import 'package:kino_app/data/response/cast_response.dart';
 import 'package:kino_app/data/response/genre_response.dart';
 import 'package:kino_app/data/response/movie_detail.dart';
@@ -10,6 +11,7 @@ import 'package:kino_app/data/response/movie_response.dart';
 import 'package:kino_app/data/response/person_detail.dart';
 import 'package:kino_app/data/response/person_response.dart';
 import 'package:kino_app/data/response/trailer_response.dart';
+import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 part 'api_client.g.dart';
@@ -19,19 +21,15 @@ abstract class ApiClient {
   static Alice alice = Alice(
     showNotification: true,
     showInspectorOnShake: false,
-    darkTheme: false,
   );
 
   static get getDio {
     Dio dio = Dio(BaseOptions(followRedirects: false));
     if (kDebugMode) dio.interceptors.add(alice.getDioInterceptor());
-    dio.interceptors.add(
-      LogInterceptor(
-        responseBody: true,
-        requestBody: true,
-        request: true,
-      ),
-    );
+    dio.interceptors.addAll([
+      LogInterceptor(responseBody: true, requestBody: true),
+      TokenInterceptor(),
+    ]);
     return dio;
   }
 
@@ -47,74 +45,49 @@ abstract class ApiClient {
   }
 
   factory ApiClient(Dio dio, String baseUrl) {
-    dio.options = BaseOptions(receiveTimeout: 30000, connectTimeout: 30000);
+    dio.options = BaseOptions(
+      receiveTimeout: Duration(seconds: 30),
+      connectTimeout: Duration(seconds: 30),
+    );
     return _ApiClient(dio, baseUrl: baseUrl);
   }
 
   @GET('movie/upcoming')
-  Future<MovieResponse> getUpcomingMovies(@Query('api_key') String apiKey);
+  Future<MovieResponse> getUpcomingMovies();
 
   @GET('movie/now_playing')
-  Future<MovieResponse> getNowPlayingMovies(
-    @Query('api_key') String apiKey,
-    @Query('page') int page,
-  );
+  Future<MovieResponse> getNowPlayingMovies(@Query('page') int page);
 
   @GET('movie/popular')
-  Future<MovieResponse> getPopularMovies(
-    @Query('api_key') String apiKey,
-    @Query('page') int page,
-  );
+  Future<MovieResponse> getPopularMovies(@Query('page') int page);
 
   @GET('movie/top_rated')
-  Future<MovieResponse> getTopRatedMovies(
-    @Query('api_key') String apiKey,
-    @Query('page') int page,
-  );
+  Future<MovieResponse> getTopRatedMovies(@Query('page') int page);
 
   @GET('discover/movie')
   Future<MovieResponse> getMoviesByGenre(
     @Query('with_genres') int? genreId,
     @Query('page') int page,
-    @Query('api_key') String apiKey,
   );
 
   @GET('genre/movie/list')
-  Future<GenreResponse> getGenres(@Query('api_key') String apiKey);
+  Future<GenreResponse> getGenres();
 
   @GET('person/popular')
-  Future<PersonResponse> getTrendingPeople(
-    @Query('api_key') String apiKey,
-    @Query('page') int page,
-  );
+  Future<PersonResponse> getTrendingPeople(@Query('page') int page);
 
   @GET('movie/{movieId}')
-  Future<MovieDetail> getMovieDetail(
-    @Path('movieId') int? movieId,
-    @Query('api_key') String apiKey,
-  );
+  Future<MovieDetail> getMovieDetail(@Path('movieId') int? movieId);
 
   @GET('movie/{movieId}/videos')
-  Future<TrailerResponse> getTrailerId(
-    @Path('movieId') int? movieId,
-    @Query('api_key') String apiKey,
-  );
+  Future<TrailerResponse> getTrailerId(@Path('movieId') int? movieId);
 
   @GET('movie/{movieId}/images')
-  Future<MovieImage> getMovieImage(
-    @Path('movieId') int? movieId,
-    @Query('api_key') String apiKey,
-  );
+  Future<MovieImage> getMovieImage(@Path('movieId') int? movieId);
 
   @GET('movie/{movieId}/credits')
-  Future<CastResponse> getCastList(
-    @Path('movieId') int? movieId,
-    @Query('api_key') String apiKey,
-  );
+  Future<CastResponse> getCastList(@Path('movieId') int? movieId);
 
   @GET('person/{personId}')
-  Future<PersonDetail> getPersonDetail(
-    @Path('personId') int? personId,
-    @Query('api_key') String apiKey,
-  );
+  Future<PersonDetail> getPersonDetail(@Path('personId') int? personId);
 }

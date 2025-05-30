@@ -8,9 +8,6 @@ class DiscoverMoreBinding implements Bindings {
   @override
   void dependencies() async {
     var moreRepository = DiscoverMoreRepository(
-      remoteSource: RemoteSource(
-        apiClient: ApiClient.getInstance()!,
-      ),
     );
     Get.lazyPut<DiscoverMoreController>(
       () => DiscoverMoreController(repository: moreRepository),

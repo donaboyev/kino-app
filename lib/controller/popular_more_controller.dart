@@ -24,7 +24,8 @@ class PopularMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels) getPopularMovies();
+          scrollController!.position.pixels)
+        getPopularMovies();
     });
     super.onInit();
   }
@@ -44,10 +45,7 @@ class PopularMoreController extends BaseController {
       _isPopularLoading.value = true;
     }
 
-    final result = await repository.getPopularMovies(
-      apiKey: Constants.apiKey,
-      page: _popularPage,
-    );
+    final result = await repository.getPopularMovies(page: _popularPage);
     _isPopularLoading.value = false;
     setLoading(false);
     if (result is MovieResponse) {

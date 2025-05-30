@@ -15,14 +15,14 @@ class RemoteSource {
 
   RemoteSource({required this.apiClient});
 
-  Future<ResponseHandler<MovieResponse>> getUpcomingMovies(
-      {required String apiKey}) async {
+  Future<ResponseHandler<MovieResponse>> getUpcomingMovies() async {
     MovieResponse response;
     try {
-      response = await apiClient.getUpcomingMovies(apiKey);
+      response = await apiClient.getUpcomingMovies();
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
@@ -30,15 +30,15 @@ class RemoteSource {
   }
 
   Future<ResponseHandler<MovieResponse>> getNowPlayingMovies({
-    required String apiKey,
     required int page,
   }) async {
     MovieResponse response;
     try {
-      response = await apiClient.getNowPlayingMovies(apiKey, page);
+      response = await apiClient.getNowPlayingMovies(page);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
@@ -46,15 +46,15 @@ class RemoteSource {
   }
 
   Future<ResponseHandler<MovieResponse>> getTopRatedMovies({
-    required String apiKey,
     required int page,
   }) async {
     MovieResponse response;
     try {
-      response = await apiClient.getTopRatedMovies(apiKey, page);
+      response = await apiClient.getTopRatedMovies(page);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
@@ -62,129 +62,142 @@ class RemoteSource {
   }
 
   Future<ResponseHandler<MovieResponse>> getPopularMovies({
-    required String apiKey,
     required int page,
   }) async {
     MovieResponse response;
     try {
-      response = await apiClient.getPopularMovies(apiKey, page);
+      response = await apiClient.getPopularMovies(page);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = response;
   }
 
-  Future<ResponseHandler<MovieResponse>> getMoviesByGenre(
-      {required int? genreId,
-      required String apiKey,
-      required int page}) async {
+  Future<ResponseHandler<MovieResponse>> getMoviesByGenre({
+    required int? genreId,
+    required int page,
+  }) async {
     MovieResponse response;
     try {
-      response = await apiClient.getMoviesByGenre(genreId, page, apiKey);
+      response = await apiClient.getMoviesByGenre(genreId, page);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = response;
   }
 
-  Future<ResponseHandler<GenreResponse>> getGenres(
-      {required String apiKey}) async {
+  Future<ResponseHandler<GenreResponse>> getGenres() async {
     GenreResponse response;
     try {
-      response = await apiClient.getGenres(apiKey);
+      response = await apiClient.getGenres();
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = response;
   }
 
-  Future<ResponseHandler<PersonResponse>> getTrendingPersons(
-      {required String apiKey, required int page}) async {
+  Future<ResponseHandler<PersonResponse>> getTrendingPersons({
+    required int page,
+  }) async {
     PersonResponse response;
     try {
-      response = await apiClient.getTrendingPeople(apiKey, page);
+      response = await apiClient.getTrendingPeople(page);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = response;
   }
 
-  Future<ResponseHandler<MovieDetail>> getMovieDetail(
-      {required int? movieId, required String apiKey}) async {
+  Future<ResponseHandler<MovieDetail>> getMovieDetail({
+    required int? movieId,
+  }) async {
     MovieDetail movieDetail;
     try {
-      movieDetail = await apiClient.getMovieDetail(movieId, apiKey);
+      movieDetail = await apiClient.getMovieDetail(movieId);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = movieDetail;
   }
 
-  Future<ResponseHandler<TrailerResponse>> getTrailerId(
-      {required int? movieId, required String apiKey}) async {
+  Future<ResponseHandler<TrailerResponse>> getTrailerId({
+    required int? movieId,
+  }) async {
     TrailerResponse response;
     try {
-      response = await apiClient.getTrailerId(movieId, apiKey);
+      response = await apiClient.getTrailerId(movieId);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = response;
   }
 
-  Future<ResponseHandler<MovieImage>> getMovieImage(
-      {required int? movieId, required String apiKey}) async {
+  Future<ResponseHandler<MovieImage>> getMovieImage({
+    required int? movieId,
+  }) async {
     MovieImage movieImage;
     try {
-      movieImage = await apiClient.getMovieImage(movieId, apiKey);
+      movieImage = await apiClient.getMovieImage(movieId);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = movieImage;
   }
 
-  Future<ResponseHandler<CastResponse>> getCastList(
-      {required int? movieId, required String apiKey}) async {
+  Future<ResponseHandler<CastResponse>> getCastList({
+    required int? movieId,
+  }) async {
     CastResponse casts;
     try {
-      casts = await apiClient.getCastList(movieId, apiKey);
+      casts = await apiClient.getCastList(movieId);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }
     return ResponseHandler()..data = casts;
   }
 
-  Future<ResponseHandler<PersonDetail>> getPersonDetail(
-      {required int? personId, required String apiKey}) async {
+  Future<ResponseHandler<PersonDetail>> getPersonDetail({
+    required int? personId,
+  }) async {
     PersonDetail response;
     try {
-      response = await apiClient.getPersonDetail(personId, apiKey);
+      response = await apiClient.getPersonDetail(personId);
     } catch (error, stacktrace) {
       print(
-          'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace');
+        'Exceptions occurred getNowPlayingMovies: $error stacktrace: $stacktrace',
+      );
       return ResponseHandler()
         ..setException(ServerError.withError(error: error));
     }

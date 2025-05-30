@@ -5,10 +5,8 @@ class PeopleMoreRepository {
 
   const PeopleMoreRepository({required this.remoteSource});
 
-  Future<dynamic> getTrendingPeople(
-      {required String apiKey, required int page}) async {
-    final response =
-        await remoteSource.getTrendingPersons(apiKey: apiKey, page: page);
+  Future<dynamic> getTrendingPeople({required int page}) async {
+    final response = await remoteSource.getTrendingPersons(page: page);
     if (response.data != null) {
       return response.data;
     }

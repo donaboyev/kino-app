@@ -5,12 +5,8 @@ class NowPlayingMoreRepository {
 
   const NowPlayingMoreRepository({required this.remoteSource});
 
-  Future<dynamic> getNowPlayingMovies({
-    required String apiKey,
-    required int page,
-  }) async {
-    final response =
-        await remoteSource.getNowPlayingMovies(apiKey: apiKey, page: page);
+  Future<dynamic> getNowPlayingMovies({required int page}) async {
+    final response = await remoteSource.getNowPlayingMovies(page: page);
     if (response.data != null) {
       return response.data;
     }

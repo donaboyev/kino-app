@@ -24,10 +24,7 @@ class MovieDetailController extends BaseController {
 
   Future<void> getMovieDetail() async {
     setLoading(true);
-    final result = await repository.getMovieDetail(
-      apiKey: Constants.apiKey,
-      movieId: movieId,
-    );
+    final result = await repository.getMovieDetail(movieId: movieId);
     setLoading(false);
     if (result is MovieDetail) {
       _movieDetail = result;
@@ -39,10 +36,7 @@ class MovieDetailController extends BaseController {
 
   Future<void> getMovieScreenshots() async {
     setLoading(true);
-    final result = await repository.getMovieImage(
-      apiKey: Constants.apiKey,
-      movieId: movieId,
-    );
+    final result = await repository.getMovieImage(movieId: movieId);
     setLoading(false);
     if (result is MovieImage) {
       _movieDetail!.movieImage = result;
@@ -54,10 +48,7 @@ class MovieDetailController extends BaseController {
 
   Future<void> getMovieTrailerId() async {
     setLoading(true);
-    final result = await repository.getTrailerId(
-      apiKey: Constants.apiKey,
-      movieId: movieId,
-    );
+    final result = await repository.getTrailerId(movieId: movieId);
     setLoading(false);
     if (result is TrailerResponse) {
       if (result.trailers!.isNotEmpty) {
@@ -71,10 +62,7 @@ class MovieDetailController extends BaseController {
 
   Future<void> getMovieCastList() async {
     setLoading(true);
-    final result = await repository.getCastList(
-      apiKey: Constants.apiKey,
-      movieId: movieId,
-    );
+    final result = await repository.getCastList(movieId: movieId);
     setLoading(false);
     if (result is CastResponse) {
       _movieDetail!.castList = result.casts;

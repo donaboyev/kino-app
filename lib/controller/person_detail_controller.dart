@@ -18,10 +18,7 @@ class PersonDetailController extends BaseController {
 
   Future<void> getPersonDetail() async {
     setLoading(true);
-    final result = await repository.getPersonDetail(
-      apiKey: Constants.apiKey,
-      personId: _personId,
-    );
+    final result = await repository.getPersonDetail(personId: _personId);
     setLoading(false);
     if (result is PersonDetail) {
       _personDetail = result;
