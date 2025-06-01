@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
-import 'package:kino_app/controller/discover_more_controller.dart';
-import 'package:kino_app/data/repository/discover_more_repository.dart';
+
+import '../controller/controllers.dart';
+import '../data/remote/remote_source.dart';
+import '../data/repository/repositories.dart';
 
 class DiscoverMoreBinding implements Bindings {
   @override
   void dependencies() async {
-    var moreRepository = DiscoverMoreRepository(
-    );
+    var moreRepository = DiscoverMoreRepository(remoteSource: RemoteSource());
     Get.lazyPut<DiscoverMoreController>(
       () => DiscoverMoreController(repository: moreRepository),
     );

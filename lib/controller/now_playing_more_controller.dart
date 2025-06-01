@@ -2,9 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/data/repository/now_playing_more_repository.dart';
 import 'package:kino_app/data/response/movie_response.dart';
+
+import '../data/repository/repositories.dart';
+import 'base_controller.dart';
 
 class NowPlayingMoreController extends BaseController {
   final NowPlayingMoreRepository repository;

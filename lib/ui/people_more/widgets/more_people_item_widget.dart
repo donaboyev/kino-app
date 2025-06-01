@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/core/constants/constants.dart';
-import 'package:kino_app/core/custom_widgets/nuts_activity_indicator.dart';
-import 'package:kino_app/core/theme/app_colors.dart';
-import 'package:kino_app/core/theme/text_styles.dart';
-import 'package:kino_app/data/response/person_response.dart';
-import 'package:kino_app/routes/app_routes.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../../core/custom_widgets/nuts_activity_indicator.dart';
+import '../../../core/theme/theme.dart';
+import '../../../data/response/responses.dart';
+import '../../../routes/app_routes.dart';
 
 class MorePeopleItemWidget extends StatelessWidget {
   final Person? person;
@@ -76,10 +76,7 @@ class MorePeopleItemWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const Icon(
-                Icons.chevron_right,
-                color: clrWhite,
-              ),
+              const Icon(Icons.chevron_right, color: clrWhite),
             ],
           ),
           Positioned.fill(
@@ -91,7 +88,7 @@ class MorePeopleItemWidget extends StatelessWidget {
                     Get.toNamed(AppRoutes.personDetail, arguments: person!.id),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

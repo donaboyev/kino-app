@@ -1,11 +1,12 @@
 import 'dart:developer';
 
-import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/data/repository/movie_detail_repository.dart';
 import 'package:kino_app/data/response/cast_response.dart';
 import 'package:kino_app/data/response/movie_detail.dart';
 import 'package:kino_app/data/response/movie_image.dart';
 import 'package:kino_app/data/response/trailer_response.dart';
+
+import '../data/repository/repositories.dart';
+import 'base_controller.dart';
 
 class MovieDetailController extends BaseController {
   final MovieDetailRepository repository;

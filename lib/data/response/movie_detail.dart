@@ -1,5 +1,5 @@
-import 'package:kino_app/data/response/cast_response.dart';
-import 'package:kino_app/data/response/movie_image.dart';
+import 'cast_response.dart';
+import 'movie_image.dart';
 
 class MovieDetail {
   final String? id;

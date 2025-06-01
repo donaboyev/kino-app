@@ -1,0 +1,9 @@
+export 'base_controller.dart';
+export 'discover_more_controller.dart';
+export 'home_controller.dart';
+export 'movie_detail_controller.dart';
+export 'now_playing_more_controller.dart';
+export 'people_more_controller.dart';
+export 'person_detail_controller.dart';
+export 'popular_more_controller.dart';
+export 'top_rated_more_controller.dart';

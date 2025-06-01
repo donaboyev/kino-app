@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:kino_app/data/response/screenshot.dart';
+
+import 'screenshot.dart';
 
 class MovieImage extends Equatable {
   final List<Screenshot>? backdrops;
@@ -13,11 +14,13 @@ class MovieImage extends Equatable {
     }
 
     return MovieImage(
-      backdrops: (result['backdrops'] as List?)
+      backdrops:
+          (result['backdrops'] as List?)
               ?.map((b) => Screenshot.fromJson(b))
               .toList() ??
           List.empty(),
-      posters: (result['posters'] as List?)
+      posters:
+          (result['posters'] as List?)
               ?.map((b) => Screenshot.fromJson(b))
               .toList() ??
           List.empty(),

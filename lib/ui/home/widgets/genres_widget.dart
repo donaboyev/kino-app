@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/controller/home_controller.dart';
-import 'package:kino_app/core/custom_widgets/nuts_activity_indicator.dart';
-import 'package:kino_app/core/theme/app_colors.dart';
-import 'package:kino_app/core/theme/text_styles.dart';
-import 'package:kino_app/data/response/genre_response.dart';
-import 'package:kino_app/routes/app_routes.dart';
-import 'package:kino_app/ui/home/widgets/item_widgets/category_title_widget.dart';
+
+import '../../../controller/controllers.dart';
+import '../../../core/custom_widgets/nuts_activity_indicator.dart';
+import '../../../core/theme/theme.dart';
+import '../../../data/response/responses.dart';
+import '../../../routes/app_routes.dart';
+import 'item_widgets/category_title_widget.dart';
 
 class GenresWidget extends GetView<HomeController> {
   const GenresWidget({super.key});
@@ -29,9 +29,9 @@ class GenresWidget extends GetView<HomeController> {
                     child: ListView.separated(
                       separatorBuilder: (context, index) =>
                           const VerticalDivider(
-                        color: clrTransparent,
-                        width: 0,
-                      ),
+                            color: clrTransparent,
+                            width: 0,
+                          ),
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       physics: const BouncingScrollPhysics(),
@@ -45,23 +45,21 @@ class GenresWidget extends GetView<HomeController> {
                               onPressed: () async => await homeController
                                   .setSelectedGenreIndex(index),
                               elevation: 0,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 4,
+                              ),
                               fillColor:
                                   homeController.selectedGenreIndex.value ==
-                                          index
-                                      ? clrPink
-                                      : clrMirage,
+                                      index
+                                  ? clrPink
+                                  : clrMirage,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               focusElevation: 0,
                               highlightElevation: 0,
                               child: Center(
-                                child: Text(
-                                  genre.name!,
-                                  style: styGenreTitle,
-                                ),
+                                child: Text(genre.name!, style: styGenreTitle),
                               ),
                             ),
                           ),

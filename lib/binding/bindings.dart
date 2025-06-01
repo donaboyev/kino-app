@@ -1,0 +1,9 @@
+export 'discover_more_binding.dart';
+export 'home_binding.dart';
+export 'http_service_binding.dart';
+export 'movie_detail_binding.dart';
+export 'now_playing_more_binding.dart';
+export 'people_more_binding.dart';
+export 'person_detail_binding.dart';
+export 'popular_more_binding.dart';
+export 'top_rated_more_binding.dart';

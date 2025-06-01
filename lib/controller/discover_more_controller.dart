@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/data/repository/discover_more_repository.dart';
 import 'package:kino_app/data/response/genre_response.dart';
 import 'package:kino_app/data/response/movie_response.dart';
+
+import '../data/repository/repositories.dart';
+import 'base_controller.dart';
 
 class DiscoverMoreController extends BaseController {
   final DiscoverMoreRepository repository;

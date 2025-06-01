@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/core/constants/constants.dart';
-import 'package:kino_app/core/custom_widgets/nuts_activity_indicator.dart';
-import 'package:kino_app/core/theme/app_colors.dart';
-import 'package:kino_app/core/theme/text_styles.dart';
-import 'package:kino_app/data/response/movie_response.dart';
-import 'package:kino_app/routes/app_routes.dart';
+
+import '../../core/constants/constants.dart';
+import '../../core/custom_widgets/nuts_activity_indicator.dart';
+import '../../core/theme/theme.dart';
+import '../../data/response/responses.dart';
+import '../../routes/app_routes.dart';
 
 class MoreMovieItemWidget extends StatelessWidget {
   final Movie? movie;
@@ -69,10 +69,8 @@ class MoreMovieItemWidget extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             RatingBarIndicator(
-                              itemBuilder: (context, index) => const Icon(
-                                Icons.star,
-                                color: clrRating,
-                              ),
+                              itemBuilder: (context, index) =>
+                                  const Icon(Icons.star, color: clrRating),
                               rating: (double.parse(movie!.voteAverage!) / 2),
                               itemCount: 5,
                               itemSize: 18,
@@ -100,10 +98,7 @@ class MoreMovieItemWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const Icon(
-                Icons.chevron_right,
-                color: clrWhite,
-              ),
+              const Icon(Icons.chevron_right, color: clrWhite),
             ],
           ),
           Positioned.fill(
@@ -115,7 +110,7 @@ class MoreMovieItemWidget extends StatelessWidget {
                     Get.toNamed(AppRoutes.movieDetail, arguments: movie!.id),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

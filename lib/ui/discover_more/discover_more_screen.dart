@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/controller/discover_more_controller.dart';
-import 'package:kino_app/core/custom_widgets/nuts_activity_indicator.dart';
-import 'package:kino_app/core/theme/app_colors.dart';
-import 'package:kino_app/core/theme/text_styles.dart';
-import 'package:kino_app/data/response/genre_response.dart';
-import 'package:kino_app/data/response/movie_response.dart';
-import 'package:kino_app/ui/widgets/more_movie_item_widget.dart';
+
+import '../../controller/controllers.dart';
+import '../../core/custom_widgets/nuts_activity_indicator.dart';
+import '../../core/theme/theme.dart';
+import '../../data/response/responses.dart';
+import '../widgets/more_movie_item_widget.dart';
 
 class DiscoverMorePage extends GetView<DiscoverMoreController> {
   const DiscoverMorePage({super.key});

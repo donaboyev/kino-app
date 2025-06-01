@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/base/base_functions.dart';
-import 'package:kino_app/controller/person_detail_controller.dart';
-import 'package:kino_app/core/constants/constants.dart';
-import 'package:kino_app/core/custom_widgets/nuts_activity_indicator.dart';
-import 'package:kino_app/core/theme/app_colors.dart';
-import 'package:kino_app/core/theme/text_styles.dart';
+
+import '../../base/base_functions.dart';
+import '../../controller/controllers.dart';
+import '../../core/constants/constants.dart';
+import '../../core/custom_widgets/nuts_activity_indicator.dart';
+import '../../core/theme/theme.dart';
 
 class PersonDetailPage extends GetView<PersonDetailController> {
   const PersonDetailPage({super.key});
@@ -46,8 +46,8 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                       const NutsActivityIndicator(),
                                   errorWidget: (context, url, error) =>
                                       Image.asset(
-                                    'assets/images/png/no_image.png',
-                                  ),
+                                        'assets/images/png/no_image.png',
+                                      ),
                                 ),
                               ),
                             ),
@@ -105,7 +105,7 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                     Visibility(
                                       visible:
                                           detailController.person!.birthday !=
-                                              null,
+                                          null,
                                       child: Expanded(
                                         child: Column(
                                           crossAxisAlignment:
@@ -117,9 +117,11 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                             ),
                                             Text(
                                               BaseFunctions.getReleaseDate(
-                                                  detailController
-                                                          .person!.birthday ??
-                                                      ''),
+                                                detailController
+                                                        .person!
+                                                        .birthday ??
+                                                    '',
+                                              ),
                                               style: styGoldText,
                                             ),
                                           ],
@@ -128,8 +130,10 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                     ),
                                     const SizedBox(width: 6),
                                     Visibility(
-                                      visible: detailController
-                                              .person!.placeOfBirth !=
+                                      visible:
+                                          detailController
+                                              .person!
+                                              .placeOfBirth !=
                                           null,
                                       child: Expanded(
                                         child: Column(
@@ -142,7 +146,8 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                             ),
                                             Text(
                                               detailController
-                                                      .person!.placeOfBirth ??
+                                                      .person!
+                                                      .placeOfBirth ??
                                                   'No data',
                                               style: styGoldText,
                                               maxLines: 3,
@@ -158,7 +163,9 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                               const SizedBox(height: 12),
                               Visibility(
                                 visible: detailController
-                                    .person!.knownAs!.isNotEmpty,
+                                    .person!
+                                    .knownAs!
+                                    .isNotEmpty,
                                 child: const Padding(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 12.0,
@@ -171,35 +178,43 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                               ),
                               Visibility(
                                 visible: detailController
-                                    .person!.knownAs!.isNotEmpty,
+                                    .person!
+                                    .knownAs!
+                                    .isNotEmpty,
                                 child: const SizedBox(height: 6),
                               ),
                               Visibility(
                                 visible: detailController
-                                    .person!.knownAs!.isNotEmpty,
+                                    .person!
+                                    .knownAs!
+                                    .isNotEmpty,
                                 child: SizedBox(
                                   height: 36,
                                   child: ListView.separated(
                                     separatorBuilder: (context, index) =>
                                         const VerticalDivider(
-                                      color: clrTransparent,
-                                      width: 6,
-                                    ),
+                                          color: clrTransparent,
+                                          width: 6,
+                                        ),
                                     scrollDirection: Axis.horizontal,
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 12,
                                     ),
                                     physics: const BouncingScrollPhysics(),
                                     itemCount: detailController
-                                        .person!.knownAs!.length,
+                                        .person!
+                                        .knownAs!
+                                        .length,
                                     itemBuilder: (context, index) {
                                       String nickname = detailController
-                                          .person!.knownAs![index];
+                                          .person!
+                                          .knownAs![index];
                                       return Container(
                                         decoration: BoxDecoration(
                                           color: clrPink,
-                                          borderRadius:
-                                              BorderRadius.circular(12),
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
                                         ),
                                         padding: const EdgeInsets.all(6),
                                         child: Center(
@@ -243,10 +258,7 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                         onTap: () => Get.back(),
                         child: const Padding(
                           padding: EdgeInsets.all(24),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: clrWhite,
-                          ),
+                          child: Icon(Icons.arrow_back_ios, color: clrWhite),
                         ),
                       ),
                     ),

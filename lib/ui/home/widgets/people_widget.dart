@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/controller/home_controller.dart';
-import 'package:kino_app/core/custom_widgets/nuts_activity_indicator.dart';
-import 'package:kino_app/core/theme/app_colors.dart';
-import 'package:kino_app/data/response/person_response.dart';
-import 'package:kino_app/routes/app_routes.dart';
-import 'package:kino_app/ui/home/widgets/item_widgets/category_title_widget.dart';
-import 'package:kino_app/ui/home/widgets/item_widgets/person_widget.dart';
+
+import '../../../controller/controllers.dart';
+import '../../../core/custom_widgets/nuts_activity_indicator.dart';
+import '../../../core/theme/theme.dart';
+import '../../../data/response/responses.dart';
+import '../../../routes/app_routes.dart';
+import 'item_widgets/category_title_widget.dart';
+import 'item_widgets/person_widget.dart';
 
 class PeopleWidget extends StatelessWidget {
   const PeopleWidget({super.key});
@@ -43,13 +44,14 @@ class PeopleWidget extends StatelessWidget {
                               physics: const BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               itemCount: homeController.people.length,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 12),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                              ),
                               separatorBuilder: (context, index) =>
                                   const VerticalDivider(
-                                color: clrTransparent,
-                                width: 5,
-                              ),
+                                    color: clrTransparent,
+                                    width: 5,
+                                  ),
                               itemBuilder: (context, index) {
                                 final Person person =
                                     homeController.people[index];
@@ -63,8 +65,7 @@ class PeopleWidget extends StatelessWidget {
                                   padding: EdgeInsets.only(right: 8.0),
                                   child: Align(
                                     alignment: Alignment.centerRight,
-                                    child:
-                                        NutsActivityIndicator(radius: 12),
+                                    child: NutsActivityIndicator(radius: 12),
                                   ),
                                 ),
                               ),
@@ -75,7 +76,7 @@ class PeopleWidget extends StatelessWidget {
                     ),
             ),
           ],
-        )
+        ),
       ],
     );
   }
