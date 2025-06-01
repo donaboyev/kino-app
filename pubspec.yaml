@@ -14,12 +14,13 @@ dependencies:
   get: ^4.7.2
   intl: ^0.20.2
   alice: ^0.4.2
-  retrofit: ^4.4.2
   carousel_slider: ^5.0.0
   flutter_rating_bar: ^4.0.1
   cached_network_image: ^3.4.0
   dio: ^5.8.0+1
   freezed_annotation: ^3.0.0
+  flutter_dotenv: ^5.2.1
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
@@ -47,3 +48,5 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/png/
+
+    - .env

@@ -40,8 +40,8 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                               fit: BoxFit.cover,
                               placeholder: (context, url) =>
                                   const NutsActivityIndicator(),
-                              errorWidget: (context, url, error) => Image.asset(
-                                  'assets/images/png/no_image.png'),
+                              errorWidget: (context, url, error) =>
+                                  Image.asset('assets/images/png/no_image.png'),
                             ),
                             borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(30),
@@ -75,8 +75,12 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                             onTap: () async {
                                               final youtubeUrl =
                                                   'https://www.youtube.com/embed/${detailController.movieDetail!.trailerId}';
-                                              if (await canLaunch(youtubeUrl)) {
-                                                await launch(youtubeUrl);
+                                              if (await canLaunchUrl(
+                                                Uri.parse(youtubeUrl),
+                                              )) {
+                                                await launchUrl(
+                                                  Uri.parse(youtubeUrl),
+                                                );
                                               }
                                             },
                                             child: const Padding(
@@ -110,8 +114,9 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 12),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                ),
                                 child: Text(
                                   detailController.movieDetail!.overview!,
                                   style: styVoteAverage,
@@ -120,7 +125,8 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                               const SizedBox(height: 12),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0),
+                                  horizontal: 12.0,
+                                ),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -135,8 +141,10 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                         ),
                                         Text(
                                           BaseFunctions.getReleaseDate(
-                                              detailController
-                                                  .movieDetail!.releaseDate!),
+                                            detailController
+                                                .movieDetail!
+                                                .releaseDate!,
+                                          ),
                                           style: styGoldText,
                                         ),
                                       ],
@@ -151,8 +159,10 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                         ),
                                         Text(
                                           BaseFunctions.getRuntime(
-                                              detailController
-                                                  .movieDetail!.runtime!),
+                                            detailController
+                                                .movieDetail!
+                                                .runtime!,
+                                          ),
                                           style: styGoldText,
                                         ),
                                       ],
@@ -167,8 +177,10 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                         ),
                                         Text(
                                           BaseFunctions.getBudget(
-                                              detailController
-                                                  .movieDetail!.budget!),
+                                            detailController
+                                                .movieDetail!
+                                                .budget!,
+                                          ),
                                           style: styGoldText,
                                         ),
                                       ],
@@ -178,11 +190,15 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                               ),
                               const SizedBox(height: 12),
                               Visibility(
-                                visible: detailController.movieDetail!
-                                    .movieImage.backdrops!.isNotEmpty,
+                                visible: detailController
+                                    .movieDetail!
+                                    .movieImage
+                                    .backdrops!
+                                    .isNotEmpty,
                                 child: const Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 12.0),
+                                    horizontal: 12.0,
+                                  ),
                                   child: Text(
                                     'Screenshots',
                                     style: styVoteAverage,
@@ -190,27 +206,37 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                 ),
                               ),
                               Visibility(
-                                visible: detailController.movieDetail!
-                                    .movieImage.backdrops!.isNotEmpty,
+                                visible: detailController
+                                    .movieDetail!
+                                    .movieImage
+                                    .backdrops!
+                                    .isNotEmpty,
                                 child: const SizedBox(height: 6),
                               ),
                               Visibility(
-                                visible: detailController.movieDetail!
-                                    .movieImage.backdrops!.isNotEmpty,
+                                visible: detailController
+                                    .movieDetail!
+                                    .movieImage
+                                    .backdrops!
+                                    .isNotEmpty,
                                 child: SizedBox(
                                   height: 155,
                                   child: ListView.separated(
                                     separatorBuilder: (context, index) =>
                                         const VerticalDivider(
-                                      color: clrTransparent,
-                                      width: 12,
-                                    ),
+                                          color: clrTransparent,
+                                          width: 12,
+                                        ),
                                     scrollDirection: Axis.horizontal,
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                      horizontal: 12,
+                                    ),
                                     physics: const BouncingScrollPhysics(),
-                                    itemCount: detailController.movieDetail!
-                                        .movieImage.backdrops!.length,
+                                    itemCount: detailController
+                                        .movieDetail!
+                                        .movieImage
+                                        .backdrops!
+                                        .length,
                                     itemBuilder: (context, index) {
                                       final Screenshot image = detailController
                                           .movieDetail!
@@ -221,9 +247,8 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                         child: CachedNetworkImage(
                                           placeholder: (context, url) =>
                                               const Center(
-                                            child:
-                                                NutsActivityIndicator(),
-                                          ),
+                                                child: NutsActivityIndicator(),
+                                              ),
                                           imageUrl:
                                               '${Constants.mediumImageBaseUrl}${image.imagePath}',
                                           fit: BoxFit.cover,
@@ -235,12 +260,8 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                               ),
                               const SizedBox(height: 12),
                               const Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 12.0),
-                                child: Text(
-                                  'Casts',
-                                  style: styVoteAverage,
-                                ),
+                                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                                child: Text('Casts', style: styVoteAverage),
                               ),
                               const SizedBox(height: 12),
                               SizedBox(
@@ -249,17 +270,21 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                   scrollDirection: Axis.horizontal,
                                   separatorBuilder: (context, index) =>
                                       const VerticalDivider(
-                                    color: clrTransparent,
-                                    width: 6,
-                                  ),
+                                        color: clrTransparent,
+                                        width: 6,
+                                      ),
                                   physics: const BouncingScrollPhysics(),
                                   itemCount: detailController
-                                      .movieDetail!.castList!.length,
+                                      .movieDetail!
+                                      .castList!
+                                      .length,
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
+                                    horizontal: 12,
+                                  ),
                                   itemBuilder: (context, index) {
                                     final Cast cast = detailController
-                                        .movieDetail!.castList![index];
+                                        .movieDetail!
+                                        .castList![index];
                                     return CastWidget(cast: cast);
                                   },
                                 ),
@@ -278,10 +303,7 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                         onTap: () => Get.back(),
                         child: const Padding(
                           padding: EdgeInsets.all(24),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: clrWhite,
-                          ),
+                          child: Icon(Icons.arrow_back_ios, color: clrWhite),
                         ),
                       ),
                     ),

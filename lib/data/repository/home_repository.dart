@@ -4,10 +4,12 @@ import 'package:kino_app/data/remote/remote_source.dart';
 import '../network/http_service.dart';
 
 class HomeRepository {
-  const HomeRepository();
+  final RemoteSource remoteSource;
+
+  const HomeRepository({required this.remoteSource});
 
   Future<dynamic> getUpcomingMovies() async {
-    final response = await Get.find<HttpService>().dio.get('/movie/upcoming');
+    final response = await remoteSource.getUpcomingMovies();
     if (response.data != null) {
       return response.data;
     }
@@ -15,10 +17,7 @@ class HomeRepository {
   }
 
   Future<dynamic> getNowPlayingMovies({required int page}) async {
-    final response = await Get.find<HttpService>().dio.get(
-      '/movie/now_playing',
-      queryParameters: {'page': page},
-    );
+    final response = await remoteSource.getNowPlayingMovies(page: page);
     if (response.data != null) {
       return response.data;
     }
@@ -26,10 +25,7 @@ class HomeRepository {
   }
 
   Future<dynamic> getPopularMovies({required int page}) async {
-    final response = await Get.find<HttpService>().dio.get(
-      '/movie/popular',
-      queryParameters: {'page': page},
-    );
+    final response = await remoteSource.getPopularMovies(page: page);
     if (response.data != null) {
       return response.data;
     }
@@ -37,10 +33,7 @@ class HomeRepository {
   }
 
   Future<dynamic> getTopRatedMovies({required int page}) async {
-    final response = await Get.find<HttpService>().dio.get(
-      '/movie/top_rated',
-      queryParameters: {'page': page},
-    );
+    final response = await remoteSource.getTopRatedMovies(page: page);
     if (response.data != null) {
       return response.data;
     }
@@ -49,12 +42,11 @@ class HomeRepository {
 
   Future<dynamic> getMoviesByGenre({
     required int? genreId,
-
     required int page,
   }) async {
-    final response = await Get.find<HttpService>().dio.get(
-      '/discover/movie',
-      queryParameters: {'with_genres': genreId, 'page': page},
+    final response = await remoteSource.getMoviesByGenre(
+      genreId: genreId,
+      page: page,
     );
     if (response.data != null) {
       return response.data;
@@ -63,7 +55,7 @@ class HomeRepository {
   }
 
   Future<dynamic> getGenres() async {
-    final response = await Get.find<HttpService>().dio.get('/genre/movie/list');
+    final response = await remoteSource.getGenres();
     if (response.data != null) {
       return response.data;
     }
@@ -71,7 +63,7 @@ class HomeRepository {
   }
 
   Future<dynamic> getTrendingPeople({required int page}) async {
-    final response = await Get.find<HttpService>().dio.get('/person/popular');
+    final response = await remoteSource.getTrendingPersons(page: page);
     if (response.data != null) {
       return response.data;
     }

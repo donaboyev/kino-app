@@ -20,15 +20,12 @@ class HttpService {
         sendTimeout: const Duration(seconds: 60),
       ),
     );
-    dio.interceptors.addAll([
-      LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-      ),
-      TokenInterceptor(),
-    ]);
+    dio.interceptors.add(TokenInterceptor());
     if (kDebugMode) {
-      dio.interceptors.add(alice.getDioInterceptor());
+      dio.interceptors.addAll([
+        alice.getDioInterceptor(),
+        LogInterceptor(requestBody: true, responseBody: true),
+      ]);
     }
   }
 }
