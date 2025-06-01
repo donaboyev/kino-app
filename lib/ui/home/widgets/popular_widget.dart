@@ -9,7 +9,7 @@ import 'package:kino_app/ui/home/widgets/item_widgets/category_title_widget.dart
 import 'package:kino_app/ui/home/widgets/item_widgets/movie_item_widget.dart';
 
 class PopularWidget extends StatelessWidget {
-  const PopularWidget({Key? key}) : super(key: key);
+  const PopularWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

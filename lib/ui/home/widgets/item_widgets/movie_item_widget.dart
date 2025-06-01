@@ -12,7 +12,7 @@ import 'package:kino_app/routes/app_routes.dart';
 class MovieItemWidget extends StatelessWidget {
   final Movie? movie;
 
-  const MovieItemWidget({Key? key, this.movie}) : super(key: key);
+  const MovieItemWidget({super.key, this.movie});
 
   @override
   Widget build(BuildContext context) {

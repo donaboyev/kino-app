@@ -13,7 +13,7 @@ import 'package:kino_app/ui/home/widgets/popular_widget.dart';
 import 'package:kino_app/ui/home/widgets/top_rated_widget.dart';
 
 class HomePage extends GetView<HomeController> {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

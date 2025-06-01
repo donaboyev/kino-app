@@ -8,7 +8,7 @@ import 'package:kino_app/data/response/movie_response.dart';
 import 'package:kino_app/ui/widgets/more_movie_item_widget.dart';
 
 class NowPlayingMorePage extends GetView<NowPlayingMoreController> {
-  const NowPlayingMorePage({Key? key}) : super(key: key);
+  const NowPlayingMorePage({super.key});
 
   @override
   Widget build(BuildContext context) {

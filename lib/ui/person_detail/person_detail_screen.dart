@@ -9,7 +9,7 @@ import 'package:kino_app/core/theme/app_colors.dart';
 import 'package:kino_app/core/theme/text_styles.dart';
 
 class PersonDetailPage extends GetView<PersonDetailController> {
-  const PersonDetailPage({Key? key}) : super(key: key);
+  const PersonDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +32,10 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                 detailController.person!.profilePath != null,
                             child: ClipPath(
                               child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(30),
+                                  bottomRight: Radius.circular(30),
+                                ),
                                 child: CachedNetworkImage(
                                   imageUrl:
                                       '${Constants.originalImageBaseUrl}${detailController.person!.profilePath ?? ''}',
@@ -44,10 +48,6 @@ class PersonDetailPage extends GetView<PersonDetailController> {
                                       Image.asset(
                                     'assets/images/png/no_image.png',
                                   ),
-                                ),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(30),
-                                  bottomRight: Radius.circular(30),
                                 ),
                               ),
                             ),

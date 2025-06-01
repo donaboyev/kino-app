@@ -7,7 +7,7 @@ import 'package:kino_app/data/response/movie_response.dart';
 import 'package:kino_app/ui/home/widgets/item_widgets/movie_item_widget.dart';
 
 class DiscoverWidget extends StatelessWidget {
-  const DiscoverWidget({Key? key}) : super(key: key);
+  const DiscoverWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

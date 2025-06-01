@@ -8,7 +8,7 @@ import 'package:kino_app/data/response/movie_response.dart';
 import 'package:kino_app/ui/widgets/more_movie_item_widget.dart';
 
 class TopRatedMorePage extends GetView<TopRatedMoreController> {
-  const TopRatedMorePage({Key? key}) : super(key: key);
+  const TopRatedMorePage({super.key});
 
   @override
   Widget build(BuildContext context) {

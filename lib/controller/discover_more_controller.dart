@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/core/constants/constants.dart';
 import 'package:kino_app/data/repository/discover_more_repository.dart';
 import 'package:kino_app/data/response/genre_response.dart';
 import 'package:kino_app/data/response/movie_response.dart';
@@ -28,8 +27,9 @@ class DiscoverMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels)
+          scrollController!.position.pixels) {
         getMoviesByGenre();
+      }
     });
     super.onInit();
   }
@@ -49,7 +49,7 @@ class DiscoverMoreController extends BaseController {
       getMoviesByGenre();
       update();
     } else {
-      print('===================> error: $result');
+      debugPrint('===================> error: $result');
     }
   }
 
@@ -94,7 +94,7 @@ class DiscoverMoreController extends BaseController {
       }
       update();
     } else {
-      print('===================> error: $result');
+      debugPrint('===================> error: $result');
     }
   }
 

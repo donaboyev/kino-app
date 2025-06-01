@@ -9,7 +9,7 @@ import 'package:kino_app/ui/home/widgets/item_widgets/category_title_widget.dart
 import 'package:kino_app/ui/home/widgets/item_widgets/person_widget.dart';
 
 class PeopleWidget extends StatelessWidget {
-  const PeopleWidget({Key? key}) : super(key: key);
+  const PeopleWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

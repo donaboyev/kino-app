@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/core/constants/constants.dart';
 import 'package:kino_app/data/repository/home_repository.dart';
 import 'package:kino_app/data/response/genre_response.dart';
 import 'package:kino_app/data/response/movie_response.dart';
@@ -75,7 +76,7 @@ class HomeController extends BaseController {
       _upcomingMovies.addAll(result.movies!);
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -96,7 +97,7 @@ class HomeController extends BaseController {
       _topRatedMovies.addAll(result.movies!);
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -117,7 +118,7 @@ class HomeController extends BaseController {
       _popularMovies.addAll(result.movies!);
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -138,7 +139,7 @@ class HomeController extends BaseController {
       _nowPlayingMovies.addAll(result.movies!);
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -151,7 +152,7 @@ class HomeController extends BaseController {
       getMoviesByGenre();
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -196,7 +197,7 @@ class HomeController extends BaseController {
       }
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -217,7 +218,7 @@ class HomeController extends BaseController {
       _people.addAll(result.people!);
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 

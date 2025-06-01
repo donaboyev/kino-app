@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:kino_app/data/remote/remote_source.dart';
 
 import '../network/http_service.dart';
 

@@ -11,7 +11,7 @@ import 'package:kino_app/routes/app_routes.dart';
 class MorePeopleItemWidget extends StatelessWidget {
   final Person? person;
 
-  const MorePeopleItemWidget({Key? key, this.person}) : super(key: key);
+  const MorePeopleItemWidget({super.key, this.person});
 
   @override
   Widget build(BuildContext context) {

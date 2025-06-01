@@ -14,7 +14,7 @@ class NutsActivityIndicator extends StatefulWidget {
   final double endRatio;
 
   const NutsActivityIndicator({
-    Key? key,
+    super.key,
     this.animating = true,
     this.radius = 10,
     this.startRatio = 0.5,
@@ -24,10 +24,10 @@ class NutsActivityIndicator extends StatefulWidget {
     this.inactiveColor = const Color(0xFFE5E5EA),
     this.animationDuration = const Duration(seconds: 1),
     this.relativeWidth = 1,
-  }) : super(key: key);
+  });
 
   @override
-  _NutsActivityIndicatorState createState() => _NutsActivityIndicatorState();
+  State<NutsActivityIndicator> createState() => _NutsActivityIndicatorState();
 }
 
 class _NutsActivityIndicatorState extends State<NutsActivityIndicator>

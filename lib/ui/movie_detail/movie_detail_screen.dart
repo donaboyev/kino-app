@@ -13,7 +13,7 @@ import 'package:kino_app/ui/movie_detail/widgets/cast_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MovieDetailPage extends GetView<MovieDetailController> {
-  const MovieDetailPage({Key? key}) : super(key: key);
+  const MovieDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +32,10 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                       Stack(
                         children: [
                           ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
+                            ),
                             child: CachedNetworkImage(
                               imageUrl:
                                   '${Constants.originalImageBaseUrl}${detailController.movieDetail!.backdropPath}',
@@ -42,10 +46,6 @@ class MovieDetailPage extends GetView<MovieDetailController> {
                                   const NutsActivityIndicator(),
                               errorWidget: (context, url, error) =>
                                   Image.asset('assets/images/png/no_image.png'),
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30),
                             ),
                           ),
                           Container(

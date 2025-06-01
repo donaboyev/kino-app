@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/core/constants/constants.dart';
 import 'package:kino_app/data/repository/people_more_repository.dart';
 import 'package:kino_app/data/response/person_response.dart';
 
@@ -24,8 +25,9 @@ class PeopleMoreController extends BaseController {
     scrollController = ScrollController();
     scrollController!.addListener(() {
       if (scrollController!.position.maxScrollExtent ==
-          scrollController!.position.pixels)
+          scrollController!.position.pixels) {
         getTrendingPeople();
+      }
     });
     super.onInit();
   }
@@ -53,7 +55,7 @@ class PeopleMoreController extends BaseController {
       _people.addAll(result.people!);
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 

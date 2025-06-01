@@ -11,7 +11,7 @@ import 'package:kino_app/data/response/movie_response.dart';
 import 'package:kino_app/routes/app_routes.dart';
 
 class HomeBannerWidget extends StatelessWidget {
-  const HomeBannerWidget({Key? key}) : super(key: key);
+  const HomeBannerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ class HomeBannerWidget extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             children: [
               ClipRRect(
+                borderRadius: BorderRadius.circular(12),
                 child: CachedNetworkImage(
                   imageUrl:
                       '${Constants.bigImageBaseUrl}${movie.backdropPath ?? movie.posterPath}',
@@ -35,7 +36,6 @@ class HomeBannerWidget extends StatelessWidget {
                   placeholder: (context, url) => const NutsActivityIndicator(),
                   errorWidget: (context, url, error) => Image.asset('assets/images/png/no_image.png'),
                 ),
-                borderRadius: BorderRadius.circular(12),
               ),
               Container(
                 decoration: const BoxDecoration(

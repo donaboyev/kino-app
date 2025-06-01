@@ -11,7 +11,7 @@ import 'package:kino_app/routes/app_routes.dart';
 class CastWidget extends StatelessWidget {
   final Cast? cast;
 
-  const CastWidget({Key? key, this.cast}) : super(key: key);
+  const CastWidget({super.key, this.cast});
 
   @override
   Widget build(BuildContext context) {

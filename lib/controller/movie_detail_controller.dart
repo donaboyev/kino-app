@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/core/constants/constants.dart';
 import 'package:kino_app/data/repository/movie_detail_repository.dart';
 import 'package:kino_app/data/response/cast_response.dart';
 import 'package:kino_app/data/response/movie_detail.dart';
@@ -30,7 +31,7 @@ class MovieDetailController extends BaseController {
       _movieDetail = result;
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -42,7 +43,7 @@ class MovieDetailController extends BaseController {
       _movieDetail!.movieImage = result;
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -56,7 +57,7 @@ class MovieDetailController extends BaseController {
       }
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 
@@ -68,7 +69,7 @@ class MovieDetailController extends BaseController {
       _movieDetail!.castList = result.casts;
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 

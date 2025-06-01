@@ -8,7 +8,7 @@ import 'package:kino_app/data/response/person_response.dart';
 import 'package:kino_app/ui/people_more/widgets/more_people_item_widget.dart';
 
 class PeopleMorePage extends GetView<PeopleMoreController> {
-  const PeopleMorePage({Key? key}) : super(key: key);
+  const PeopleMorePage({super.key});
 
   @override
   Widget build(BuildContext context) {

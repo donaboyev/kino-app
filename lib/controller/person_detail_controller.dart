@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:kino_app/base/base_controller.dart';
-import 'package:kino_app/core/constants/constants.dart';
 import 'package:kino_app/data/repository/person_detail_repository.dart';
 import 'package:kino_app/data/response/person_detail.dart';
 
@@ -24,7 +25,7 @@ class PersonDetailController extends BaseController {
       _personDetail = result;
       update();
     } else {
-      print('===================> error: $result');
+      log('===================> error: $result');
     }
   }
 

@@ -9,7 +9,7 @@ import 'package:kino_app/data/response/movie_response.dart';
 import 'package:kino_app/ui/widgets/more_movie_item_widget.dart';
 
 class DiscoverMorePage extends GetView<DiscoverMoreController> {
-  const DiscoverMorePage({Key? key}) : super(key: key);
+  const DiscoverMorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +54,13 @@ class DiscoverMorePage extends GetView<DiscoverMoreController> {
                                 child: ListView.separated(
                                   separatorBuilder: (context, index) =>
                                       const VerticalDivider(
-                                    color: clrTransparent,
-                                    width: 0,
-                                  ),
+                                        color: clrTransparent,
+                                        width: 0,
+                                      ),
                                   scrollDirection: Axis.horizontal,
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
                                   physics: const BouncingScrollPhysics(),
                                   itemCount: moreController.genres!.length,
                                   itemBuilder: (context, index) {
@@ -74,16 +75,19 @@ class DiscoverMorePage extends GetView<DiscoverMoreController> {
                                                   .setSelectedGenreIndex(index),
                                           elevation: 0,
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 8),
-                                          fillColor: moreController
+                                            horizontal: 8,
+                                          ),
+                                          fillColor:
+                                              moreController
                                                       .selectedGenreIndex
                                                       .value ==
                                                   index
                                               ? clrPink
                                               : clrMirage,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
                                           ),
                                           focusElevation: 0,
                                           highlightElevation: 0,
@@ -114,7 +118,7 @@ class DiscoverMorePage extends GetView<DiscoverMoreController> {
                                   childCount:
                                       moreController.moviesByGenre.length,
                                 ),
-                              )
+                              ),
                       ],
                     ),
                     Obx(

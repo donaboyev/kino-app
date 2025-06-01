@@ -9,7 +9,7 @@ import 'package:kino_app/routes/app_routes.dart';
 import 'package:kino_app/ui/home/widgets/item_widgets/category_title_widget.dart';
 
 class GenresWidget extends GetView<HomeController> {
-  const GenresWidget({Key? key}) : super(key: key);
+  const GenresWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
