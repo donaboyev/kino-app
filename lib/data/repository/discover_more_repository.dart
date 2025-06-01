@@ -1,6 +1,3 @@
-import 'package:get/get.dart';
-
-import '../network/http_service.dart';
 import '../remote/remote_source.dart';
 
 class DiscoverMoreRepository {
@@ -23,7 +20,7 @@ class DiscoverMoreRepository {
   }
 
   Future<dynamic> getGenres() async {
-    final response = await Get.find<HttpService>().dio.get('/genre/movie/list');
+    final response = await remoteSource.getGenres();
     if (response.data != null) {
       return response.data;
     }
