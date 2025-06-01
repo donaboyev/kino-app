@@ -1,18 +1,11 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:kino_app/data/remote/response_handler.dart';
-import 'package:kino_app/data/remote/server_error.dart';
-import 'package:kino_app/data/response/cast_response.dart';
-import 'package:kino_app/data/response/genre_response.dart';
-import 'package:kino_app/data/response/movie_detail.dart';
-import 'package:kino_app/data/response/movie_image.dart';
-import 'package:kino_app/data/response/movie_response.dart';
-import 'package:kino_app/data/response/person_detail.dart';
-import 'package:kino_app/data/response/person_response.dart';
-import 'package:kino_app/data/response/trailer_response.dart';
 
 import '../network/http_service.dart';
+import '../response/responses.dart';
+import 'response_handler.dart';
+import 'server_error.dart';
 
 class RemoteSource {
   RemoteSource();
@@ -95,7 +88,7 @@ class RemoteSource {
     dio.Response response;
     try {
       response = await Get.find<HttpService>().dio.get(
-        '/movie/popular',
+        '/discover/movie',
         queryParameters: {'page': page, 'with_genres': genreId},
       );
     } catch (error, stacktrace) {
