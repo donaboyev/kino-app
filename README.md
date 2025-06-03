@@ -5,10 +5,6 @@ In this app, you can get information about popular movies based on the informati
 <img src="https://user-images.githubusercontent.com/56734609/130063030-2100740d-6fda-45f7-b6d6-8bf755fc48ac.png" width="800" height="450" />
 </p>
 
-Download
-------
-<a href='https://play.google.com/store/apps/details?id=com.donaboyev.kinoapp'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height="100"/></a>
-
 This is a completely open source project. You can use this structure of code in any project you are building. 
 
 If you want to contribute this project, any kind of pull requests are accepted.
