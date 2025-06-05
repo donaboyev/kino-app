@@ -7,6 +7,8 @@ In this app, you can get information about popular movies based on the informati
 
 This is a completely open source project. You can use this structure of code in any project you are building. 
 
+https://github.com/user-attachments/assets/89296872-0f04-41cb-ba96-850bfd2a3dab
+
 If you want to contribute this project, any kind of pull requests are accepted.
 You can add one of these features in your request:
 * Search movie
