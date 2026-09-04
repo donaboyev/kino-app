@@ -20,6 +20,9 @@ class ServerError implements Exception {
       case DioExceptionType.receiveTimeout:
         _errorMessage = "Connection timeout";
         break;
+      case DioExceptionType.transformTimeout:
+        _errorMessage = "Connection timeout";
+        break;
       case DioExceptionType.badResponse:
         {
           if (error.response?.data['Error'] is Map<String, dynamic>) {
