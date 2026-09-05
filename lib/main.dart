@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'binding/bindings.dart';
 import 'core/constants/constants.dart';
 import 'core/constants/version_enum.dart';
-import 'data/network/http_service.dart';
 import 'routes/app_pages.dart';
 import 'routes/app_routes.dart';
 import 'ui/home/home_screen.dart';
@@ -33,7 +32,6 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.initial,
-      navigatorKey: HttpService.alice.getNavigatorKey(),
       getPages: AppPages.pages,
       defaultTransition: Transition.zoom,
       home: const HomePage(),
