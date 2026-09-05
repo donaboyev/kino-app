@@ -1,0 +1,1 @@
+Latest internal testing build for Kino App using Fastlane

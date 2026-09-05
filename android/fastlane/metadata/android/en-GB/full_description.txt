@@ -1,0 +1,5 @@
+Kino App helps you discover films and learn more about them.
+
+Browse popular, upcoming, now-playing and top-rated movies, explore films by genre, search for a title and open detailed movie information in a clean, simple interface.
+
+Movie information is provided using The Movie Database (TMDB) API. This product uses the TMDB API but is not endorsed or certified by TMDB.
